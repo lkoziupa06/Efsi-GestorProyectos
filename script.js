@@ -1,0 +1,3 @@
+let proyectos = [];
+let tareas = [];
+

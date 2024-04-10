@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Organizador</title>
+</head>
+<body>
+
+    <h1>Organizador de Tareas</h1>
+
+<div id="proyectos">
+  <h2>Proyectos</h2>
+  <ul id="listaProyectos"></ul>
+  <form id="AgregarProyecto">
+    <input type="text" id="nombreProyecto" placeholder="Nombre del proyecto" required>
+    <input type="text" id="descProyecto" placeholder="Descripción del proyecto">
+    <button onclick = AgregarProyecto()>Agregar Proyecto</button>
+  </form>
+</div>
+
+<div id="tareas">
+  <h2>Tareas</h2>
+  <ul id="listaTareas"></ul>
+  <form id="AgregarTareas">
+    <select id="proyecto" required></select>
+    <input type="text" id="descTarea" placeholder="Descripción de la tarea" required>
+    <input type="date" id="fechaLimiteTarea" required>
+    <button onclick = AgregarTarea()>Agregar Tarea</button>
+  </form>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
