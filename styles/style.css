@@ -1,23 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 body {
     font-family: 'Roboto Condensed', sans-serif;
-}
-
-#proyectos {
-    margin-bottom: 20px;
-}
-
-#tareas {
-    margin-top: 20px;
-}
-
-#AgregarProyecto {
-    margin-bottom: 20px;
-}
-
-#AgregarTareas {
-    margin-bottom: 20px;
 }
 
 #proyectos h2,
@@ -34,14 +25,13 @@ body {
     display: block;
     width: 100%;
     margin-bottom: 10px;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 button[type="button"] {
     display: block;
-    width: 100%;
     padding: 10px;
     background-color: #007bff;
     color: #fff;
@@ -49,6 +39,7 @@ button[type="button"] {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    width: 100%;
 }
 
 button[type="button"]:hover {
@@ -97,9 +88,9 @@ select {
     border-bottom-right-radius: 5px;
 }
 
-/* Media query para hacer que las tarjetas sean responsive */
 @media screen and (max-width: 768px) {
     .card {
-        flex-basis: calc(50% - 10px); /* 50% de ancho en pantallas más pequeñas */
+        flex-basis: calc(50% - 10px);
     }
 }
+

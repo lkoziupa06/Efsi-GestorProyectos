@@ -6,9 +6,9 @@ function AgregarProyecto(){
     const descProyectoInput = document.getElementById("descProyecto");
     const proyecto = proyectoInput.value.trim();
     const desc = descProyectoInput.value.trim();
-    const existe = proyectos.find(proyecto => proyecto.name === proyecto); // Falta completar la validacion.
+    const existe = proyectos.find((pro) => pro.name == proyecto);
 
-    if(proyecto != "" && desc != ""){
+    if(proyecto !== "" && desc !== "" && !existe){
         proyectos.push({
             name: proyecto,
             desc: desc,
@@ -29,7 +29,7 @@ function mostrarProyectos() {
 
     listaProyectos.innerHTML = "";
 
-    proyectos.forEach(proyecto => {
+    proyectos.forEach(proyecto => { //AÑADIR PROYECTO
         const card = document.createElement("div");
         const cardHeader = document.createElement("div");
         const cardBody = document.createElement("div"); 
@@ -53,17 +53,13 @@ function mostrarProyectos() {
         card.appendChild(cardHeader);
 
 
-        proyecto.tareas.forEach(tarea => {
+        proyecto.tareas.forEach(tarea => { // AÑADIR TAREAS
             const tareaElement = document.createElement("div");
             const checkbox = document.createElement("input");
             checkbox.type = "checkbox";
             checkbox.checked = tarea.completada;
             checkbox.onclick = function() {
                 tarea.completada = !tarea.completada;
-                if(tarea.completada) {
-                    const tiempo = new Date().getTime();
-                    tarea.tiempoFinalizacion = tiempo;
-                }
                 mostrarProyectos(); 
             };
 
@@ -108,7 +104,7 @@ function AgregarTarea(){
 
     const proyecto = proyectos.find(proyecto => proyecto.name === nombreProyecto);
     
-    if(proyecto){
+    if(proyecto && tarea !== ""){
         proyecto.tareas.push({
             tarea: tarea,
             fechaLimite: fechaLimiteTarea,
