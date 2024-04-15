@@ -13,23 +13,24 @@
 
 <div id="proyectos">
   <h2>Proyectos</h2>
-  <ul id="listaProyectos"></ul>
-  <form id="AgregarProyecto">
-    <input type="text" id="nombreProyecto" placeholder="Nombre del proyecto" required>
+  <div id="AgregarProyecto">
+    <input type="text" id="nombreProyecto" placeholder="Nombre del proyecto">
     <input type="text" id="descProyecto" placeholder="Descripción del proyecto">
-    <button onclick = AgregarProyecto()>Agregar Proyecto</button>
-  </form>
+    <button onclick = AgregarProyecto() type="button">Agregar Proyecto</button>
+  </div>
 </div>
 
 <div id="tareas">
   <h2>Tareas</h2>
-  <ul id="listaTareas"></ul>
-  <form id="AgregarTareas">
-    <select id="proyecto" required></select>
-    <input type="text" id="descTarea" placeholder="Descripción de la tarea" required>
-    <input type="date" id="fechaLimiteTarea" required>
-    <button onclick = AgregarTarea()>Agregar Tarea</button>
-  </form>
+  <div id="AgregarTareas">
+    <select id="proyecto"></select>
+    <input type="text" id="descTarea" placeholder="Descripción de la tarea">
+    <input type="date" id="fechaLimiteTarea">
+    <button onclick = AgregarTarea() type="button">Agregar Tarea</button>
+  </div>
+
+  <div id="listaProyectos"></div>
+
 </div>
     <script src="script.js"></script>
 </body>
