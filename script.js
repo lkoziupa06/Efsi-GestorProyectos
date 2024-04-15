@@ -76,6 +76,9 @@ function mostrarProyectos() {
 
             tareaElement.appendChild(checkbox);
             cardBody.appendChild(tareaElement);
+
+            tareaElement.classList.add("tareaElement");
+            checkbox.classList.add("checkbox");
         });
 
         card.appendChild(cardBody); 
