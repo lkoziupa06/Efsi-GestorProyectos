@@ -2,7 +2,7 @@ var proyectos = [];
 
 function crearElementoConClases(tagName, clases = []) {
     const elemento = document.createElement(tagName);
-    elemento.classList.add(...clases);
+    elemento.classList.add(...clases); 
     return elemento;
 }
 
@@ -59,7 +59,7 @@ function mostrarProyectos() {
     const listaProyectos = document.getElementById("listaProyectos");
     listaProyectos.innerHTML = "";
     proyectos.forEach(proyecto => {
-        listaProyectos.appendChild(crearElementoProyecto(proyecto));
+        listaProyectos.appendChild(crearElementoProyecto(proyecto)); 
     });
 }
 
