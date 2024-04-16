@@ -98,4 +98,6 @@ select {
     background-color: #9c7c7c;
     color: #c7c7c7;
     padding: 1rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0,2rem;
 }

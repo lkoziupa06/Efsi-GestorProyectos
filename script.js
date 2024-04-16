@@ -107,7 +107,7 @@ function AgregarTarea(){
 
     const proyecto = proyectos.find(proyecto => proyecto.name === nombreProyecto);
     
-    if(proyecto && tarea !== ""){
+    if(proyecto && tarea !== "" && isNaN(fechaLimiteTarea)){
         proyecto.tareas.push({
             tarea: tarea,
             fechaLimite: fechaLimiteTarea,
