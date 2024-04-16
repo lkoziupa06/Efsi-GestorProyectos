@@ -182,3 +182,43 @@ function restablecerFiltros() {
     mostrarProyectos();
 }
 
+//Funcion para ejecutar desde consola para testear mas rapido.
+
+function Test() {
+    const nombresProyectos = ["Proyecto A", "Proyecto B", "Proyecto C", "Proyecto D", "Proyecto E", "Proyecto F", "Proyecto G", "Proyecto H", "Proyecto I", "Proyecto J"];
+    const descripciones = ["Descripción del proyecto 1", "Descripción del proyecto 2", "Descripción del proyecto 3", "Descripción del proyecto 4", "Descripción del proyecto 5"];
+
+    for (let i = nombresProyectos.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [nombresProyectos[i], nombresProyectos[j]] = [nombresProyectos[j], nombresProyectos[i]];
+    }
+
+    for (let i = 0; i < 7; i++) { 
+        const nombreAleatorio = nombresProyectos[i];
+        const descripcionAleatoria = descripciones[Math.floor(Math.random() * descripciones.length)];
+        const fechaCreacionAleatoria = new Date().getTime() - Math.floor(Math.random() * 10000000000); 
+
+        const proyecto = {
+            name: nombreAleatorio,
+            desc: descripcionAleatoria,
+            fechaCreacion: fechaCreacionAleatoria,
+            tareas: []
+        };
+
+        for (let j = 0; j < 10; j++) {
+            const tareaAleatoria = `Tarea ${j + 1}`;
+            const fechaLimiteAleatoria = new Date(new Date().getTime() + Math.floor(Math.random() * 1000 * 60 * 60 * 24 * 30)); 
+            const completadaAleatoria = Math.random() < 0.5; 
+
+            proyecto.tareas.push({
+                tarea: tareaAleatoria,
+                fechaLimite: fechaLimiteAleatoria.toISOString().split('T')[0], 
+                completada: completadaAleatoria
+            });
+        }
+
+        proyectos.push(proyecto);
+    }
+    selectDatos();
+    mostrarProyectos();
+}
