@@ -79,6 +79,7 @@ function AgregarProyecto(){
             tareas: []
         });
 
+        proyectosBackup = [];
         mostrarProyectos();
         selectDatos();
     }
@@ -221,4 +222,10 @@ function Test() {
     }
     selectDatos();
     mostrarProyectos();
+}
+
+function EliminarProyectos(){
+    proyectos = [];
+    mostrarProyectos();
+    selectDatos();
 }
