@@ -1,13 +1,11 @@
 var proyectos = [];
 
-// Función para crear un elemento HTML con clases opcionales
 function crearElementoConClases(tagName, clases = []) {
     const elemento = document.createElement(tagName);
     elemento.classList.add(...clases);
     return elemento;
 }
 
-// Función para crear un elemento HTML para una tarea
 function crearElementoTarea(tarea) {
     const elementoTarea = crearElementoConClases("div", ["tareaElement"]);
     const checkbox = document.createElement("input");
@@ -33,7 +31,6 @@ function crearElementoTarea(tarea) {
     return elementoTarea;
 }
 
-// Función para crear un elemento HTML para un proyecto
 function crearElementoProyecto(proyecto) {
     const card = crearElementoConClases("div", ["card"]);
     const cardHeader = crearElementoConClases("div", ["card-header"]);
@@ -57,7 +54,7 @@ function crearElementoProyecto(proyecto) {
     return card;
 }
 
-// Función para mostrar todos los proyectos
+
 function mostrarProyectos() {
     const listaProyectos = document.getElementById("listaProyectos");
     listaProyectos.innerHTML = "";
@@ -129,29 +126,59 @@ function errorDatos(){
 }
 
 function buscarTareas() {
-    const fechaSeleccionada = document.getElementById("fechaLimiteTarea").value;
+    const fechaSeleccionada = document.getElementById("fechaLimiteBusqueda").value;
     const listaProyectos = document.getElementById("listaProyectos");
-    const proyectosFiltrados = [];
-
     listaProyectos.innerHTML = "";
+
+    let seEncontraronTareas = false;
 
     proyectos.forEach(proyecto => {
         const tareasCoincidentes = proyecto.tareas.filter(tarea => tarea.fechaLimite === fechaSeleccionada);
 
         if (tareasCoincidentes.length > 0) {
-            const proyectoFiltrado = Object.assign({}, proyecto);
-            proyectoFiltrado.tareas = tareasCoincidentes;
-            proyectosFiltrados.push(proyectoFiltrado);
+            seEncontraronTareas = true;
+
+            const card = document.createElement("div");
+            const cardHeader = document.createElement("div");
+            const cardBody = document.createElement("div");
+            const cardFooter = document.createElement("div");
+            const titulo = document.createElement("h3");
+            const descripcion = document.createElement("p");
+            const fechaCreacion = document.createElement("small");
+
+            card.classList.add("card");
+            cardHeader.classList.add("card-header");
+            cardBody.classList.add("card-body");
+            cardFooter.classList.add("card-footer");
+
+            titulo.textContent = proyecto.name;
+            descripcion.textContent = proyecto.desc;
+            fechaCreacion.textContent = "Fecha de creación: " + new Date(proyecto.fechaCreacion).toLocaleString();
+
+            cardHeader.appendChild(titulo);
+            cardHeader.appendChild(descripcion);
+            cardFooter.appendChild(fechaCreacion);
+            card.appendChild(cardHeader);
+
+            tareasCoincidentes.forEach(tarea => {
+                cardBody.appendChild(crearElementoTarea(tarea));
+            });
+
+            card.appendChild(cardBody);
+            card.appendChild(cardFooter);
+            listaProyectos.appendChild(card);
         }
     });
 
-    if (proyectosFiltrados.length === 0) {
+    if (!seEncontraronTareas) {
         const mensaje = document.createElement("p");
         mensaje.textContent = "No se encontraron tareas para la fecha seleccionada.";
         listaProyectos.appendChild(mensaje);
-    } else {
-        proyectosFiltrados.forEach(proyecto => {
-            listaProyectos.appendChild(crearElementoProyecto(proyecto));
-        });
     }
 }
+
+
+function restablecerFiltros() {
+    mostrarProyectos();
+}
+
