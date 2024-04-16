@@ -24,6 +24,7 @@ body {
 #nombreProyecto,
 #descProyecto,
 #proyecto,
+#proyecto2,
 #descTarea,
 #fechaLimiteTarea {
     display: block;
@@ -60,18 +61,19 @@ select {
 }
 
 #listaProyectos {
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 10px; 
+    columns: 3; 
+    column-gap: 10px;
 }
 
 .card {
-    flex: 0 0 calc(23% - 10px); 
+    display: inline-block; 
+    width: 90%; 
+    margin-bottom: 10px; 
+    margin-inline-end: 10px; 
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 5px;
     background-color: #f9f9f9;
-    margin-top: 10px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -104,4 +106,13 @@ select {
     padding: 1rem;
     padding-top: 0.2rem;
     padding-bottom: 0,2rem;
+}
+
+.fechaLimiteExpirada {
+    color: rgb(115, 36, 36);
+    border: black;
+}
+.fechaLimiteCorrecta {
+    color: rgb(22, 126, 22);
+    border: black;
 }
